@@ -1,5 +1,5 @@
 {
-  "name": "terminal-ui-library",
+  "name": "terminal-ui",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,10 +13,19 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rollup -c",
+    "prepare": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "keywords": [
+    "react",
+    "terminal",
+    "ui-library",
+    "tailwindcss"
+  ],
+  "author": "Pholosho Seloane",
+  "license": "MIT",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -34,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10"
   }
 }
