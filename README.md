@@ -1,70 +1,188 @@
-# Getting Started with Create React App
+# Terminal UI Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Terminal UI Library** is a React component library inspired by the terminal look and feel, built with Tailwind CSS. It provides a set of components that allow you to create terminal-style UIs in your React applications.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Installation](#installation)
+- [Getting Started](#getting-started)
+- [Components](#components)
+  - [TerminalWindow](#terminalwindow)
+  - [TerminalLine](#terminalline)
+  - [TerminalInput](#terminalinput)
+  - [TerminalStatusBar](#terminalstatusbar)
+  - [CommandHistory](#commandhistory)
+  - [TerminalOutput](#terminaloutput)
+- [Example Usage](#example-usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To install the Terminal UI Library, use npm:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install terminal-ui-library
+yarn add terminal-ui-library
 
-### `npm test`
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Getting Started
 
-### `npm run build`
+After installing the library, you can start using the components in your React application. Make sure that you have Tailwind CSS set up in your project. If not, you can follow this guide to get started with Tailwind CSS.
+Components
+TerminalWindow
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A container component that represents the terminal window.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+import { TerminalWindow } from 'terminal-ui-library';
 
-### `npm run eject`
+<TerminalWindow>
+  {/* Other components like TerminalLine, TerminalInput go here */}
+</TerminalWindow>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+TerminalLine
 
-## Learn More
+A component that displays a single line in the terminal, including a prompt and some text.
+```bash
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+javascript
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+import { TerminalLine } from 'terminal-ui-library';
 
-### Code Splitting
+<TerminalLine prompt="$">Hello, World!</TerminalLine>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
 
-### Analyzing the Bundle Size
+TerminalInput
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+A component that allows users to input commands in the terminal. It takes a prompt prop and an onSubmit callback function.
 
-### Making a Progressive Web App
+```bash
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+javascript
 
-### Advanced Configuration
+import { TerminalInput } from 'terminal-ui-library';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<TerminalInput prompt="$" onSubmit={(command) => console.log(command)} />
 
-### Deployment
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+TerminalStatusBar
 
-### `npm run build` fails to minify
+A component that represents the status bar at the bottom of the terminal, showing information like the current directory and status.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+javascript
+
+```bash
+
+import { TerminalStatusBar } from 'terminal-ui-library';
+
+<TerminalStatusBar directory="~/projects/terminal-ui-library" status="Normal Mode" />
+
+```
+
+CommandHistory
+
+A component that displays a list of previously entered commands and their results.
+
+javascript
+
+```bash
+
+
+import { CommandHistory } from 'terminal-ui-library';
+
+const history = [
+  { prompt: '$', command: 'echo Hello', output: 'Hello' },
+];
+
+<CommandHistory history={history} />
+
+
+```
+
+
+TerminalOutput
+
+A component that displays the output of the most recent command.
+
+
+```bash
+
+javascript
+
+import { TerminalOutput } from 'terminal-ui-library';
+
+<TerminalOutput output="Command executed successfully." />
+
+```
+
+Example Usage
+
+Here's an example of how you can put everything together:
+
+javascript
+
+```bash
+
+import React, { useState } from 'react';
+import {
+  TerminalWindow,
+  TerminalLine,
+  TerminalInput,
+  TerminalStatusBar,
+  CommandHistory,
+  TerminalOutput,
+} from 'terminal-ui-library';
+
+function App() {
+  const [history, setHistory] = useState([
+    { prompt: '$', command: 'echo Welcome to the terminal!', output: 'Welcome to the terminal!' }
+  ]);
+
+  const handleCommandSubmit = (command) => {
+    const newHistory = [...history, { prompt: '$', command, output: `You typed: ${command}` }];
+    setHistory(newHistory);
+  };
+
+  return (
+    <TerminalWindow>
+      <CommandHistory history={history} />
+      <TerminalInput prompt="$" onSubmit={handleCommandSubmit} />
+      <TerminalOutput output="Type a command and press Enter..." />
+      <TerminalStatusBar directory="~/projects/terminal-ui-library" status="Normal Mode" />
+    </TerminalWindow>
+  );
+}
+
+export default App;
+
+```
+
+Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request if you'd like to help improve the library.
+License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+
+
+### Overview:
+
+- **Installation:** Explains how to install the library.
+- **Getting Started:** Guides the user to set up the library and Tailwind CSS.
+- **Components:** Lists all available components with usage examples.
+- **Example Usage:** Demonstrates how to use multiple components together in a React app.
+- **Contributing:** Invites users to contribute to the library.
+- **License:** Provides licensing information.
+
+This `README.md` gives users a comprehensive guide to get started with your terminal-inspired UI library.
+
