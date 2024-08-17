@@ -22,8 +22,8 @@
 To install the Terminal UI Library, use npm:
 
 ```bash
-npm install terminal-ui-library
-yarn add terminal-ui-library
+npm install react-terminal-ui-lib
+yarn add react-terminal-ui-lib
 
 ```
 
@@ -37,7 +37,7 @@ A container component that represents the terminal window.
 
 ```bash
 
-import { TerminalWindow } from 'terminal-ui-library';
+import { TerminalWindow } from 'react-terminal-ui-lib';
 
 <TerminalWindow>
   {/* Other components like TerminalLine, TerminalInput go here */}
@@ -54,7 +54,7 @@ A component that displays a single line in the terminal, including a prompt and 
 javascript
 ```bash
 
-import { TerminalLine } from 'terminal-ui-library';
+import { TerminalLine } from 'react-terminal-ui-lib';
 
 <TerminalLine prompt="$">Hello, World!</TerminalLine>
 
@@ -67,7 +67,7 @@ A component that allows users to input commands in the terminal. It takes a prom
 javascript
 ```bash
 
-import { TerminalInput } from 'terminal-ui-library';
+import { TerminalInput } from 'react-terminal-ui-lib';
 
 <TerminalInput prompt="$" onSubmit={(command) => console.log(command)} />
 
@@ -81,9 +81,9 @@ javascript
 
 ```bash
 
-import { TerminalStatusBar } from 'terminal-ui-library';
+import { TerminalStatusBar } from 'react-terminal-ui-lib';
 
-<TerminalStatusBar directory="~/projects/terminal-ui-library" status="Normal Mode" />
+<TerminalStatusBar directory="~/projects/react-terminal-ui-lib" status="Normal Mode" />
 
 ```
 
@@ -96,7 +96,7 @@ javascript
 ```bash
 
 
-import { CommandHistory } from 'terminal-ui-library';
+import { CommandHistory } from 'react-terminal-ui-lib';
 
 const history = [
   { prompt: '$', command: 'echo Hello', output: 'Hello' },
@@ -117,7 +117,7 @@ A component that displays the output of the most recent command.
 
 javascript
 
-import { TerminalOutput } from 'terminal-ui-library';
+import { TerminalOutput } from 'react-terminal-ui-lib';
 
 <TerminalOutput output="Command executed successfully." />
 
@@ -139,7 +139,7 @@ import {
   TerminalStatusBar,
   CommandHistory,
   TerminalOutput,
-} from 'terminal-ui-library';
+} from 'react-terminal-ui-lib';
 
 function App() {
   const [history, setHistory] = useState([
@@ -156,7 +156,7 @@ function App() {
       <CommandHistory history={history} />
       <TerminalInput prompt="$" onSubmit={handleCommandSubmit} />
       <TerminalOutput output="Type a command and press Enter..." />
-      <TerminalStatusBar directory="~/projects/terminal-ui-library" status="Normal Mode" />
+      <TerminalStatusBar directory="~/projects/react-terminal-ui-lib" status="Normal Mode" />
     </TerminalWindow>
   );
 }

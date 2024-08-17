@@ -14,7 +14,7 @@ const TerminalInput = ({ prompt, onSubmit }) => {
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center bg-gray-900">
       <span className="text-terminalText">{prompt}</span>
       <input
         type="text"
