@@ -50,9 +50,9 @@ import { TerminalWindow } from 'terminal-ui-library';
 TerminalLine
 
 A component that displays a single line in the terminal, including a prompt and some text.
-```bash
 
 javascript
+```bash
 
 import { TerminalLine } from 'terminal-ui-library';
 
@@ -64,9 +64,8 @@ TerminalInput
 
 A component that allows users to input commands in the terminal. It takes a prompt prop and an onSubmit callback function.
 
-```bash
-
 javascript
+```bash
 
 import { TerminalInput } from 'terminal-ui-library';
 
